@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "word-book",
+  "productName": "LexiForge",
   "version": "0.1.0",
-  "identifier": "com.word-book.app",
+  "identifier": "com.lexiforge.app",
   "build": {
     "beforeDevCommand": "yarn dev",
     "devUrl": "http://localhost:1420",
@@ -12,8 +12,8 @@
   "app": {
     "windows": [
       {
-        "title": "单词本",
-        "width": 280,
+        "title": "LexiForge",
+        "width": 680,
         "height": 540,
         "focus": true,
         "transparent": true,
