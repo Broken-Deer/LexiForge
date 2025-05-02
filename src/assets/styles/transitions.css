@@ -1,0 +1,51 @@
+.entrance-leave-active {
+  transition: all 0.1s ease;
+}
+
+.entrance-enter-active {
+  transition: all 0.3s cubic-bezier(0, 0.75, 0.2, 1);
+}
+
+.entrance-leave-from {
+  opacity: 1;
+}
+
+.entrance-leave-to {
+  opacity: 0;
+}
+
+.entrance-enter-from {
+  transform: translate(0, 70px);
+}
+
+.entrance-enter-to {
+  transform: translate(0, 0);
+}
+
+.zoom-out-leave-active {
+  transition: all 80ms cubic-bezier(0.65, 0, 1, 0.42);
+}
+
+.zoom-out-enter-active {
+  transition: all 250ms cubic-bezier(0, 0.65, 0.26, 1);
+}
+
+.zoom-out-leave-from {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.zoom-out-leave-to {
+  transform: scale(1.03);
+  opacity: 0;
+}
+
+.zoom-out-enter-from {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.zoom-out-enter-to {
+  transform: scale(1);
+  opacity: 1;
+}
