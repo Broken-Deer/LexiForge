@@ -13,7 +13,7 @@ jobs:
       - name: Get app version
         id: step
         run: |
-          echo "text=$(jq -r .version core/tauri.conf.json)" >> "$GITHUB_OUTPUT"
+          echo "text=$(jq -r .version src-tauri/tauri.conf.json)" >> "$GITHUB_OUTPUT"
     outputs:
       app_version: ${{ steps.step.outputs.text }}
   build-arm-linux:
@@ -44,25 +44,25 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Debian bundle(aarch64)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/word-book_${{ needs.get-version.outputs.app_version }}_arm64.deb
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/LexiForge_${{ needs.get-version.outputs.app_version }}_arm64.deb
 
       - name: Upload rpm bundle
         uses: actions/upload-artifact@v4
         with:
           name: RPM bundle(aarch64)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/rpm/word-book-${{ needs.get-version.outputs.app_version }}-1.aarch64.rpm
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/rpm/LexiForge-${{ needs.get-version.outputs.app_version }}-1.aarch64.rpm
 
       - name: Upload appimage bundle
         uses: actions/upload-artifact@v4
         with:
           name: AppImage bundle(aarch64)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/word-book_${{ needs.get-version.outputs.app_version }}_aarch64.AppImage
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/LexiForge_${{ needs.get-version.outputs.app_version }}_aarch64.AppImage
 
       - name: Upload updater signature
         uses: actions/upload-artifact@v4
         with:
           name: Updater signature(aarch64-appimage)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/word-book_${{ needs.get-version.outputs.app_version }}_aarch64.AppImage.sig
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/LexiForge_${{ needs.get-version.outputs.app_version }}_aarch64.AppImage.sig
 
   build-other:
     needs: [get-version]
@@ -127,46 +127,46 @@ jobs:
         if: matrix.platform == 'ubuntu-22.04'
         with:
           name: Debian bundle(amd64)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/word-book_${{ needs.get-version.outputs.app_version }}_amd64.deb
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/LexiForge_${{ needs.get-version.outputs.app_version }}_amd64.deb
 
       - name: Upload rpm bundle
         uses: actions/upload-artifact@v4
         if: matrix.platform == 'ubuntu-22.04'
         with:
           name: RPM bundle(x86_64)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/rpm/word-book-${{ needs.get-version.outputs.app_version }}-1.x86_64.rpm
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/rpm/LexiForge-${{ needs.get-version.outputs.app_version }}-1.x86_64.rpm
 
       - name: Upload appimage bundle
         uses: actions/upload-artifact@v4
         if: matrix.platform == 'ubuntu-22.04'
         with:
           name: AppImage bundle(amd64)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/word-book_${{ needs.get-version.outputs.app_version }}_amd64.AppImage
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/LexiForge_${{ needs.get-version.outputs.app_version }}_amd64.AppImage
 
       - name: Upload Windows installation-free exe
         uses: actions/upload-artifact@v4
         if: matrix.platform == 'windows-latest'
         with:
           name: Windows Installation-free(64-bit-exe)
-          path: ${{ github.workspace }}/src-tauri/target/release/word-book.exe
+          path: ${{ github.workspace }}/src-tauri/target/release/LexiForge.exe
 
       - name: Upload Microsoft Installer bundle
         uses: actions/upload-artifact@v4
         if: matrix.platform == 'windows-latest'
         with:
           name: Microsoft Installer bundle(64-bit)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/msi/word-book_${{ needs.get-version.outputs.app_version }}_x64_en-US.msi
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/msi/LexiForge_${{ needs.get-version.outputs.app_version }}_x64_en-US.msi
 
       - name: Upload NSIS bundle
         uses: actions/upload-artifact@v4
         if: matrix.platform == 'windows-latest'
         with:
           name: NSIS bundle(64-bit)
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/nsis/word-book_${{ needs.get-version.outputs.app_version }}_x64-setup.exe
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/nsis/LexiForge_${{ needs.get-version.outputs.app_version }}_x64-setup.exe
 
       - name: Upload dmg bundle
         uses: actions/upload-artifact@v4
         if: matrix.platform == 'macos-latest'
         with:
           name: MacOS ${{ matrix.arch }} bundle(dmg)
-          path: ${{ github.workspace }}/src-tauri/target/${{matrix.target}}-apple-darwin/release/bundle/dmg/word-book_${{ needs.get-version.outputs.app_version }}_${{ matrix.arch }}.dmg
+          path: ${{ github.workspace }}/src-tauri/target/${{matrix.target}}-apple-darwin/release/bundle/dmg/LexiForge_${{ needs.get-version.outputs.app_version }}_${{ matrix.arch }}.dmg
